@@ -1,0 +1,18 @@
+12306订票助手
+一组帮你订票的工具。
+特性：
+* 点击插件按钮会弹出快速登陆页
+* 登陆页优化：自动填充用户名与密码，在验证码输入框按回车直接提交数据
+* 查询页优化：自动填充上次查询的发到站，调整始发日期到最后一个订票日（日期+11天)， 高亮显示可订车次，自动刷新。
+* 订单提交页优化：省略订单确认过程，按"Quick Submit"或在验证码输入框内按回车，会直接提交订单。
+* 没有输入内容时刷新验证码时，按回车会刷新验证码
+
+
+A kit to book ticket through 12306.cn
+We have these features:
+* username/password save, will reduce your login input
+* quick login pop-up window
+* login helper: reduce some dynamic check when login
+* query helper: hi-light trains with tickets, store trains start/destination, auto-adjust leaving time to the last available day (date + 11days), auto-refresh 
+* submit helper: remove the validate procedure, press enter in the capacha code zone will post your data directly to the server.
+
