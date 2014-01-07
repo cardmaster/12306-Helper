@@ -1,9 +1,16 @@
 {
     "name": "12306 Helpers",
 
-    "version": "0.9",
+    "version": "1.0",
 
-    "background_page": "background.html",
+    "manifest_version": 2,
+
+    "background": {"page": "background.html"},
+
+    "web_accessible_resources": [
+	"inject/login_pagehack.js",
+	"inject/login_dosubmit.js"
+    ],
 
     "permissions": ["contextMenus", "tabs", "*://*.12306.cn/*"],
 
@@ -23,7 +30,7 @@
         {
             "matches":
                 [
-		"*://dynamic.12306.cn/otsweb/loginAction*"
+		"*://kyfw.12306.cn/otn/login/init*"
                 ],
             "run_at": "document_idle",
             "js": ["jquery-1.4.2.min.js", "shared.js", "12306login.js"],
