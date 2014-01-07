@@ -76,12 +76,12 @@
 <body>
 
 <div class="formContainer">
-<form name="loginForm" id="loginForm" method="post" action="https://dynamic.12306.cn/otsweb/loginAction.do?method=login" target="_blank">
+<form name="loginForm" id="loginForm" method="post" action="https://kyfw.12306.cn/otn/login/init" target="_blank">
 
 <div class="inputLine">
 	<div class="inputLabel">Username: </div>
 	<div class="inputField">
-		<input type="text" name="loginUser.user_name" value="" id="UserName" style=" width:220px;" class="input_txt" />	
+		<input type="text" name="loginUser.user_name" value="" id="username" style=" width:220px;" class="input_txt" />	
 		<input type="hidden" name="nameErrorFocus" id="nameErrorFocus" value="" />
 	</div>
 </div>
@@ -94,55 +94,17 @@
 	</div>
 </div>
 
-<div class="inputLine">
-	<div class="inputLabel">CAPACHA: </div>
-	<div class="inputField">
-		<input type="text" name="randCode" maxlength="4" value="" id="randCode" style="width:110px;" class="input_txt" />
-		<input type="hidden" name="randErrorFocus" id="randErrorFocus" value="" />
-		&nbsp;
-		&nbsp;
-		<img height="30" src="loading.gif" onclick="this.src=this.src+'&amp;'+Math.random();" title="Capacha code" id="img_rrand_code" />
-	</div>
-</div>
-
-<div class="submitLine">
-	&nbsp; <input class="button" type="submit" value="Login 12306" /> &nbsp;
-</div>
-
 </form>
 
 <div class="saveLine">
-	<button class="button" id="saveLoginsButton">Save Logins</button>
+	<button class="button" id="saveLoginsButton">LOG IN 12306</button>
 	<span style="color:#F00" id="passSaveText">! will save plain passwords on your disk !</span>
-
 </div>
+
 </div>
 
 <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
-<script type="text/javascript">
-	function loadRandCodImage() {
-		$("#img_rrand_code").attr("src", "https://dynamic.12306.cn/otsweb/passCodeAction.do?rand=lrand");
-	}
-
-	//will load the image after page poped up
-	window.setTimeout (loadRandCodImage, 200);
-
-	//load saved user && password
-	chrome.extension.sendRequest ({what: "logins"}, function(logins) {
-		$("#UserName").attr("value", logins.username);
-		$("#password").attr("value", logins.password);
-	});
-	$("#saveLoginsButton").click(function(){
-		var loginsToSave = {username: $("#UserName").attr("value"), password: $("#password").attr("value")};
-		chrome.extension.sendRequest({what:"saveLogins", logins: loginsToSave}, function(resp){
-			$("#passSaveText").attr("style", "color:#0F8;").text("Saved !");
-		});
-		return false;
-	});
-
-	//focus in capacha input
-	$("#randCode").focus();
-</script>
+<script type="text/javascript" src="popup_inpage.js"></script>
 
 </body>
 </html>
