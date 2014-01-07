@@ -30,6 +30,15 @@ function saveLogins(logins) {
 	return true;
 }
 
+function savePassengers(passengerList) {
+	localStorage.activePassengers = passengerList;
+	return true;
+}
+
+function loadPassengers() {
+	return {passengers: defval(localStorage.activePassengers, [[]])};
+}
+
 chrome.extension.onRequest.addListener( function(request, sender, sendResponse) 
 {
 	var reqItem = request.what;
@@ -50,6 +59,12 @@ chrome.extension.onRequest.addListener( function(request, sender, sendResponse)
 			new Audio("hasticket.ogg").play();
 		}
 		sendResponse({ok:true});
+	} else if (reqItem == "savePassengers") {
+		savePassengers(request.passengers);
+		sendResponse({ok:true});
+	} else if (reqItem == "passengers") {
+		var passList = loadPassengers();
+		sendResponse(passList);
 	}
 });
 

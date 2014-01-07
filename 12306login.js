@@ -64,18 +64,14 @@ function pagehack()
 
 	var randCodeInput = $("#randCode");
 
-	$("#randCode").keyup(function (keyevent) {
+	randCodeInput.keyup(function (keyevent) {
 		var randCode = $("#randCode").val();
 		if (randCode && randCode.length == 4) {
 			quickLogin();
 		}
 	});
 
-	$("#randCode").focus();
-	randCodeInput.keyup(function(e) {
-		//do nothing
-		disabledEventPropagation(e); 
-	});
+	randCodeInput.focus();
 
 	var randimg = $("#img_rand_code");
 	randimg.css("margin-left", "100px");

@@ -9,7 +9,9 @@
 
     "web_accessible_resources": [
 	"inject/login_pagehack.js",
-	"inject/login_dosubmit.js"
+	"inject/login_dosubmit.js",
+	"inject/autoquery_pagehack.js",
+	"inject/confirm_pagehack.js"
     ],
 
     "permissions": ["contextMenus", "tabs", "*://*.12306.cn/*"],
@@ -39,7 +41,7 @@
 	{ 
 	    "matches":
 		[
-		"*://dynamic.12306.cn/otsweb/order/querySingleAction.do*"
+		"*://kyfw.12306.cn/otn/leftTicket/init*"
 		],
 	    "run_at": "document_idle",
 	    "js": ["jquery-1.4.2.min.js", "shared.js", "autoquery.js"],
@@ -48,10 +50,10 @@
 	{ 
 	    "matches":
 		[
-		"*://dynamic.12306.cn/otsweb/order/confirmPassengerAction.do*"
+		"*://kyfw.12306.cn/otn/confirmPassenger/initDc*"
 		],
 	    "run_at": "document_idle",
-	    "js": ["jquery-1.4.2.min.js", "shared.js", "submithelper.js"],
+	    "js": ["jquery-1.4.2.min.js", "shared.js", "confirmpage.js"],
 	    "all_frames": true
 	}
     ] 
