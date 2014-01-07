@@ -33,7 +33,11 @@ function quickLogin()
 		}
 	} else {
 		if (qlUsername) $("#username").attr("value", qlUsername);
-		if (qlPassword) $("#username").attr("value", qlPassword);
+		if (qlPassword) $("#password").attr("value", qlPassword);
+		if (! (qlUsername && qlPassword))
+		{
+			return;
+		}
 	}
 	injectJs('inject/login_dosubmit.js');
 }
@@ -60,13 +64,10 @@ function pagehack()
 
 	var randCodeInput = $("#randCode");
 
-	$("#randCode").keydown(function (keyevent) {
-		if (keyevent.keyCode == 13) {
-			var randCode = $("#randCode").val();
-			if (randCode && randCode.length == 4) {
-				quickLogin();
-			}
-			return false;
+	$("#randCode").keyup(function (keyevent) {
+		var randCode = $("#randCode").val();
+		if (randCode && randCode.length == 4) {
+			quickLogin();
 		}
 	});
 
@@ -85,6 +86,4 @@ function pagehack()
 }
 
 pagehack();
-
-
 
